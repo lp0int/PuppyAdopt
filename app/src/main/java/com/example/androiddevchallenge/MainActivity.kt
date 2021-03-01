@@ -17,7 +17,6 @@ package com.example.androiddevchallenge
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
@@ -28,7 +27,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -96,13 +94,11 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.loki
             )
         )
-        MaterialTheme {
             LazyColumn(content = {
                 items(puppyData) {
                     PuppyItem(puppyInfo = it)
                 }
             })
-        }
     }
 
     @Composable

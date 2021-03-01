@@ -21,13 +21,13 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -43,7 +43,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,37 +61,43 @@ class MainActivity : AppCompatActivity() {
                 "Jarrod Richards",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.lulu
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 12,
                 "Niko",
                 "Stanley Bowles",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.niko
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 6,
                 "Spot",
                 "Tim Harvey",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.spot
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 21,
                 "Lucky",
                 "Cameron Coombs",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.lucky
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 12,
                 "Buddy",
                 "Alfredo Rahman",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.buddy
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 5,
                 "Jarvis",
                 "Dax Lautner",
                 "this is some info about this puppy,balabalabgala...",
                 R.drawable.jarvis
-            ), PuppyInfo(
+            ),
+            PuppyInfo(
                 5,
                 "Loki",
                 "Lucas Nicole",
@@ -100,11 +105,13 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.loki
             )
         )
-            LazyColumn(content = {
+        LazyColumn(
+            content = {
                 items(puppyData) {
                     PuppyItem(puppyInfo = it)
                 }
-            })
+            }
+        )
     }
 
     @Composable
@@ -116,13 +123,9 @@ class MainActivity : AppCompatActivity() {
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp, vertical = 10.dp)
                 .clickable {
-//                    Toast
-//                        .makeText(this, puppyInfo.name, Toast.LENGTH_LONG)
-//                        .show()
                     val intent = Intent()
-                    //获取intent对象
                     intent.setClass(this, PuppyDetailActivity::class.java)
-                    intent.putExtra("puppyInfo",puppyInfo)
+                    intent.putExtra("puppyInfo", puppyInfo)
                     startActivity(intent)
                 },
             shape = RoundedCornerShape(18.dp),
@@ -135,18 +138,16 @@ class MainActivity : AppCompatActivity() {
             ) {
                 Spacer(modifier = Modifier.width(10.dp))
                 Image(
-                    painter = painterResource(id = puppyInfo.imageRes), contentDescription = puppyInfo.name,
+                    painter = painterResource(id = puppyInfo.imageRes),
+                    contentDescription = puppyInfo.name,
                     modifier = Modifier
                         .height(80.dp)
                         .width(80.dp)
                         .clip(shape = RoundedCornerShape(18.dp)),
                     contentScale = ContentScale.FillBounds
-
                 )
                 Spacer(modifier = Modifier.width(20.dp))
-                Column(
-
-                ) {
+                Column() {
                     Text(
                         text = puppyInfo.name,
                         style = MaterialTheme.typography.h6,
